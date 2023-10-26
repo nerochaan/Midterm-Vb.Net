@@ -1,0 +1,84 @@
+Public Class oop
+
+    Private Sub oop_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        '    Dim objUserInfo As New UserInfo
+        '    Dim objmyTextBox As New validateTextbox
+        '    Dim strName, strAge As String
+
+        '    'strName = InputBox("Enter your Name", "User Information")
+        '    'strAge = InputBox("Enter your Age", "User Information")
+
+        '    strName = txtName.Text
+        '    strAge = txtAge.Text
+        '    'strAge = InputBox("Enter your Age", "User Information")
+
+        '    If objmyTextBox.isTextboxEmpty(txtName) = True Then
+        '        MessageBox.Show("Name field is required.")
+        '    Else
+        '        MessageBox.Show(objUserInfo.displayUserInfo(strName, strAge))
+        '    End If
+        '    'MessageBox.Show(objUserInfo.displayUserInfo(strName, strAge))
+    End Sub
+
+    Private Sub btnGetInfo_Click(sender As Object, e As EventArgs) Handles btnGetInfo.Click
+        Dim objUserInfo As New UserInfo
+        Dim objmyTextBox As New validateTextbox
+        Dim strName, strAge As String
+
+        'strName = InputBox("Enter your Name", "User Information")
+        'strAge = InputBox("Enter your Age", "User Information")
+
+        strName = txtName.Text
+        strAge = txtAge.Text
+        'strAge = InputBox("Enter your Age", "User Information")
+
+        If objmyTextBox.isTextboxEmpty(txtName) Or objmyTextBox.isTextboxEmpty(txtAge) Then
+            MessageBox.Show("Field is required.")
+            If objmyTextBox.isTextageThree(txtAge) Then
+                MessageBox.Show("Invalid Age")
+            End If
+        ElseIf objmyTextBox.isTextageThree(txtAge) Then
+            MessageBox.Show("Invalid Age")
+        Else
+            MessageBox.Show(objUserInfo.displayUserInfo(strName, strAge))
+        End If
+        'MessageBox.Show(objUserInfo.displayUserInfo(strName, strAge))
+
+
+    End Sub
+
+
+    'Function displayUserInfo(strName As String, strAge As String)
+    '    Dim completeInfo As String
+    '    completeInfo = strName & vbNewLine & strAge
+    '    Return completeInfo
+    'End Function
+
+End Class
+
+Class validateTextbox
+    Function isTextboxEmpty(text As TextBox) As Boolean
+        If text.Text = "" Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Function isTextageThree(text As TextBox) As Boolean
+        If text.Text.Length > 3 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+End Class
+
+
+Class UserInfo
+    Function displayUserInfo(strName As String, strAge As String)
+        Dim completeInfo As String
+        completeInfo = strName & vbNewLine & strAge
+        Return completeInfo
+    End Function
+End Class
